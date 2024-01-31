@@ -23,6 +23,9 @@
     <body class="antialiased">
         <ul>
             <li><a href="macro">Macro</a></li>
+            <li><a href="api/api">API</a></li>
+            <li><a href="todo">todo</a></li>
+            <li><a href="todoAPI">todo with API</a></li>
         </ul>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))

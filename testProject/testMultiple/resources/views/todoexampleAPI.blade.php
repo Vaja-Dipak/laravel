@@ -31,16 +31,7 @@
                                         <input type="submit" class="form-control btn btn-primary">
                                     </div>
                                 </div>
-                                <ul class="list-group rounded-0">
-                                    @foreach($tododata as $dt)
-                                    <li class="list-group-item border-1 w-100 d-flex ps-3 ps-0">
-                                        {{ $dt->name }}
-                                        &emsp;&emsp;
-                                        <button class="btn btn-primary btn-sm">DELETE</button>
-                                        &emsp;
-                                        <button class="btn btn-danger btn-sm">DELETE</button>
-                                    </li>
-                                    @endforeach
+                                <ul id="todolist" class="list-group rounded-0">
 
                                 </ul>
                             </form>
@@ -51,3 +42,27 @@
         </div>
     </section>
 </body>
+<script>
+    function fetchtododata() {
+        fetch("http://localhost:8000/todo").then((response) => response.json()).then((result) => {
+            console.log(result);
+            var lst = ''
+            result.forEach(element => {
+                // console.log(element.name)
+                lst += `<li class="list-group-item border-1 w-100 d-flex ps-3 ps-0"> ${element.name} &emsp;&emsp;
+                <button class="btn btn-primary btn-sm">DELETE</button>
+                &emsp;
+                <button onClick="deletetodo(${element.id})" class="btn btn-danger btn-sm">DELETE</button>`
+                // &emsp;&emsp;
+
+            });
+            document.getElementById('todolist').innerHTML = (lst)
+        })
+    }
+
+    function deletetodo(id) {
+        fetch("http://localhost:8000/todo")
+    }
+
+    fetchtododata()
+</script>

@@ -15,8 +15,8 @@ class TodoController extends Controller
     public function index()
     {
         $tododata=todo::get();
-        return view('todo',compact('tododata'));
-        // return $tododata;
+        // return view('todo',compact('tododata'));
+        return $tododata;
     }
 
     /**

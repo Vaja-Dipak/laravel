@@ -67,4 +67,25 @@ class Macros extends FormBuilder {
 
         return $this->select($name, $list, $selected, $options);
     }
+
+    public function selectCountry($name, $selected = null, $options = array())
+    {
+        $list = [
+            "" => "Select Country...",
+            "Afghanistan" => "Afghanistan",
+            "Albania" => "Albania",
+            "Algeria" => "Algeria",
+            "Argentina" => "Argentina",
+            "Armenia" => "Armenia",
+            "Australia" => "Australia",
+            "Austria" => "Austria",
+            "Azerbaijan" => "Azerbaijan",
+            "Bahrain" => "Bahrain",
+            "Bangladesh" => "Bangladesh",
+            "Belarus" => "Belarus",
+            "Belgium" => "Belgium",
+            // ..................
+        ];
+        return $this->select($name, $list, $selected, $options);
+    }
 }

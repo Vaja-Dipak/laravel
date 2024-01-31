@@ -17,5 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::view('/macro','macroexample');
+
+Route::get('/todo', [App\Http\Controllers\TodoController::class, 'index']);
+
+Route::get('/addtodo', [App\Http\Controllers\TodoController::class, 'store']);
+
+Route::view('/todoAPI','todoexampleAPI');
+

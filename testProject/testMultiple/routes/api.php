@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/api', [App\Http\Controllers\apicall::class, 'index']);
+
+Route::get('/deletetodo/{id}', [App\Http\Controllers\apicall::class, 'destroy']);
+

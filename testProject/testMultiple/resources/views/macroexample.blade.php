@@ -10,8 +10,13 @@
 <body>
     <form action="">
         <div class="form-group">
-            <label for="bank_name">Bank Name</label>
+            <label for="bank_name">Bank Name </label>
             {{ Form::selectBank("bank_name", $merchant['paymentInfo']->bank_name ?? null,["class"=>"form-control"]) }}
+
+            &emsp;&emsp;
+
+            <label for="country">Country </label>
+            {{ Form::selectCountry("country", $merchant['paymentInfo']->country ?? null,["class"=>"form-control"]) }}
         </div>
     </form>
 </body>
