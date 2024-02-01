@@ -39,7 +39,7 @@ class TodoController extends Controller
     {
         $todo->name=$request->title;
         $todo->save();
-        return redirect('todo');
+        return redirect('todoAPI');
     }
 
     /**
@@ -82,8 +82,11 @@ class TodoController extends Controller
      * @param  \App\Models\todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(todo $todo)
+    public function destroy($id, todo $todo)
     {
-        //
+        $data=$todo::find($id);
+        $data->delete();
+        return view('todoAPI');
+        // dd();
     }
 }
