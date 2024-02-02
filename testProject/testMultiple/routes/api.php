@@ -22,7 +22,7 @@ Route::get('/api', [App\Http\Controllers\apicall::class, 'index']);
 
 Route::get('/todoapi', [App\Http\Controllers\TodoController::class, 'index']);
 
-Route::get('/addtodo', [App\Http\Controllers\TodoController::class, 'store']);
+Route::any('/addtodo', [App\Http\Controllers\TodoController::class, 'store']);
 
 Route::get('/deletetodo/{id}', [App\Http\Controllers\TodoController::class, 'destroy']);
 

@@ -19,20 +19,18 @@
                 <div class="col col-lg-6 col-xl-4">
                     <div class="card rounded-3">
                         <div class="card-body p-4">
-                            <form id="todo" onsubmit="savetodo()">
-
+                            <form method="post" id="todo" onsubmit="savetodo()">
                                 <div class="row">
                                     <input type="text" name="title" id="title"
-                                        class="w-50 border m-3 border-primary form-control">
-                                    <input type="submit" class="w-25 m-3 form-control btn btn-primary" id="save"
+                                        class="w-50 border m-1 border-primary form-control">
+                                    <input type="submit" class="w-25 m-1 form-control btn btn-primary" id="save"
                                         value="SAVE">
-                                    <input type="button" class="w-25 m-3 form-control btn btn-primary" id="updt"
+                                    <input type="button" class="w-25 m-1 form-control btn btn-primary" id="updt"
                                         value="UPDATE" hidden="true">
+                                    <input type="reset" class="m-1 btn-sm form-control btn btn-warning" id="reset"
+                                        value="CLEAR" hidden="true">
                                 </div>
-
-                                <ul id="todolist" class="list-group rounded-0">
-
-                                </ul>
+                                <ul id="todolist" class="list-group rounded-0"></ul>
                             </form>
                         </div>
                     </div>
@@ -62,6 +60,7 @@
         document.getElementById('title').value = name;
         document.getElementById('save').hidden = true;
         document.getElementById('updt').hidden = false;
+        document.getElementById('reset').hidden = false;
 
     }
 
@@ -69,23 +68,26 @@
         fetch("http://localhost:8000/api/deletetodo/" + id).then((response) => response.json()).then((result) => {
             console.log(result);
         })
+
+        fetchtododata();
     }
 
     function savetodo() {
         event.preventDefault()
+        let name = document.getElementById('title').value;
 
-        console.log("save");
-        fetch("http://localhost:8000/api/addtodo/",{
-            method:"POST",
-            headers: {
-                    "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                    name: title
-                })
-        }).then((response)=>response.json()).then((result)=>{
+        console.log(name);
+        fetch("http://localhost:8000/api/addtodo/", {
+            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            body: JSON.stringify({title: name })
+
+        }).then((response) => response.json()).then((result) => {
             console.log(result);
         })
+
+        document.getElementById('title').value ="";
+        fetchtododata();
     }
 
     fetchtododata()

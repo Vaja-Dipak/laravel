@@ -37,9 +37,11 @@ class TodoController extends Controller
      */
     public function store(Request $request, todo $todo)
     {
+        // return($request);
+        // dd("hii");
         $todo->name=$request->title;
         $todo->save();
-        return redirect('todoAPI');
+        return $todo;
     }
 
     /**
